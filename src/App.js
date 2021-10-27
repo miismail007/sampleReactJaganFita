@@ -1,25 +1,58 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Header from './Components/Header-component/Header'
+import Products from './Components/Product-component/Products'
 
 function App() {
+  const menu = ['Home','Gallery',"About","Contact"]
+  var logo = "Fita"
+  const products = [
+    {
+      name : "samsung m31",
+      description : "Recent Flagship mobile",
+      price : "13000"
+    },
+    {
+      name : "samsung m32",
+      description : "Recent Flagship mobile",
+      price : "15000"
+    },
+    {
+      name : "samsung m51",
+      description : "Recent Flagship mobile",
+      price : "17000"
+    },
+    {
+      name : "samsung m52",
+      description : "Recent Flagship mobile",
+      price : "19000"
+    },
+    {
+      name : "samsung m31",
+      description : "Recent Flagship mobile",
+      price : "13000"
+    },
+    {
+      name : "samsung m32",
+      description : "Recent Flagship mobile",
+      price : "15000"
+    },
+    {
+      name : "samsung m51",
+      description : "Recent Flagship mobile",
+      price : "17000"
+    },
+    {
+      name : "samsung m52",
+      description : "Recent Flagship mobile",
+      price : "19000"
+    }
+  ]
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header menu={menu} logo={logo}/>
+      <Products products={products}/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
