@@ -6,7 +6,7 @@ function Header(props) {
             <a className="navbar-brand" href="#">{props.logo}</a>
             <ul className="navbar-nav">
                     {props.menu.map((menuItem)=>
-                        <li className="nav-item">
+                        <li className="nav-item" key={Math.random()}>
                             <a className="nav-link" href="#">{menuItem}</a>
                         </li>
                     )}

@@ -2,12 +2,17 @@ import React from 'react'
 
 function ProductItem(props) {
     return (
-        <div class="card col-md-3">
-            <div class="card-body">
-            <h4 class="card-title">{props.productItemData.name}</h4>
-            <p class="card-text">{props.productItemData.description}</p>
-            <p class="card-text">{props.productItemData.id}</p>
-            <a href="#" class="btn btn-primary">{props.productItemData.price}</a>
+        <div className="card col-md-3">
+            <div className="card-body">
+            <h4 className="card-title">{props.productItemData.name}</h4>
+            <p className="card-text">{props.productItemData.description}</p>
+            <p className="card-text">{props.productItemData.price}</p>
+            <a href="#" className="btn btn-primary" onClick={()=>{
+                props.updateProduct(props.productItemData.id)
+            }}>Update</a>
+            <a href="#" className="btn btn-primary" onClick={()=>{
+                props.deleteProduct(props.productItemData.id)
+            }}>Delete</a>
             </div>
         </div>
     )
