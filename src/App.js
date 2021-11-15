@@ -5,15 +5,6 @@ import Products from './Components/Product-component/Products'
 import StateExample from './StateExample'
 
 function App() {
-
-
-  
-
-
-
-
-
-
   const [ logo , setlogo ] = useState("Fita")
   const [ menu , setMenu ] = useState(["Home" , "about" , "contact"])
   const [ products , setProducts ] = useState([])
@@ -27,8 +18,22 @@ function App() {
   )
 
 
-  const setProductToState = (obj) => {
-    setProducts([...products,obj])
+  const setProductToState = (process,obj) => {
+    if(process == 'add'){
+      setProducts([...products,obj])
+    }else{
+      let newProducts = products
+      newProducts.map((product) => {
+        if(product.id === obj.id){
+          product.name = obj.name
+          product.description = obj.description
+          product.price = obj.price
+        }
+      })
+      setProducts(newProducts);
+      setFormData({})
+    }
+    
   }
   
 
@@ -51,12 +56,17 @@ function App() {
   }
   return (
     <div>
-      <StateExample/>
-      <Form setProductToState={setProductToState} formData={formData}/>
       <Header menu={menu} logo={logo}/>
+      {/* <StateExample/> */}
+      <Form setProductToState={setProductToState} formData={formData}/>
       <Products products={products} deleteProduct={deleteProduct} updateProduct={updateProduct}/>
     </div>
   )
 }
 
 export default App
+
+
+
+
+

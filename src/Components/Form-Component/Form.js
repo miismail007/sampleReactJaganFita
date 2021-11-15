@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Form(props) {
     const [name , setname ] = useState("")
     const [description , setdescription ] = useState("")
     const [price , setprice ] = useState("")
+
+    useEffect(()=>{
+        setname(props.formData.name)
+        setdescription(props.formData.description)
+        setprice(props.formData.price)
+    },[props.formData])
     return (
         <div className="container">
                 <div className="form-group">
@@ -29,15 +35,19 @@ function Form(props) {
                 </div>
                 <button type="submit" className="btn btn-primary" onClick={
                     ()=>{
-                        // let obj = {}
-                        // obj.id = Math.floor(Math.random() * 100)
-                        // obj.name = name
-                        // obj.description = description
-                        // obj.price = price
-                        // props.setProductToState(obj)
-                        let id = Math.floor(Math.random() * 100)
-                        props.setProductToState({id,name,description,price})
-
+                        if(props.formData.id){
+                            let id = props.formData.id
+                            props.setProductToState("update",{id,name,description,price})
+                            setname("")
+                            setdescription("")
+                            setprice("")
+                        }else{
+                            let id = Math.floor(Math.random() * 100)
+                            props.setProductToState("add",{id,name,description,price})
+                            setname("")
+                            setdescription("")
+                            setprice("")
+                        }
                         
                     }
                 }>Submit</button>
