@@ -7,7 +7,7 @@ function Products(props) {
             <div className="row">
                 {props.products.map(
                     (productData)=>{
-                        return <ProductItem productItemData={productData} key={Math.random()} deleteProduct = {props.deleteProduct}
+                        return <ProductItem productItemData={productData} key={productData.id} deleteProduct = {props.deleteProduct}
                         updateProduct = {props.updateProduct} />
                     }
                 )}

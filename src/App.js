@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Form from './Components/Form-Component/Form'
 import Header from './Components/Header-component/Header'
 import Products from './Components/Product-component/Products'
+import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom'
 import StateExample from './StateExample'
 
 function App() {
@@ -55,12 +56,24 @@ function App() {
     })
   }
   return (
-    <div>
-      <Header menu={menu} logo={logo}/>
-      {/* <StateExample/> */}
-      <Form setProductToState={setProductToState} formData={formData}/>
-      <Products products={products} deleteProduct={deleteProduct} updateProduct={updateProduct}/>
-    </div>
+    <Router>
+      <div>
+        <Header menu={menu} logo={logo}/>
+        {/* <StateExample/> */}
+        <Routes>
+          <Route path="/home" element={
+            <div>
+              <Form setProductToState={setProductToState} formData={formData}/>
+              <Products products={products} deleteProduct={deleteProduct} updateProduct={updateProduct}/>
+            </div>
+          }/>
+          <Route path="about" element={<h1>About</h1>}/>
+          <Route path="contact" element={<h1>Contact</h1>}/>
+        </Routes>
+        
+        
+      </div>
+    </Router>
   )
 }
 

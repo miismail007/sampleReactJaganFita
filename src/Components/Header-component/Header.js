@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Header(props) {
     return (
@@ -7,7 +8,7 @@ function Header(props) {
             <ul className="navbar-nav">
                     {props.menu.map((menuItem)=>
                         <li className="nav-item" key={Math.random()}>
-                            <a className="nav-link" href="#">{menuItem}</a>
+                            <Link className="nav-link" to={menuItem.toLowerCase()}>{menuItem}</Link>
                         </li>
                     )}
             </ul>
